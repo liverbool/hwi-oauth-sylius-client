@@ -6,5 +6,5 @@ use HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse;
 
 class ResourceResponse extends PathUserResponse
 {
-
+// TODO
 }
