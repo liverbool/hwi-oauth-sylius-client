@@ -1,0 +1,31 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    providers:
+        sylius_user_provider:
+            id: sylius.user_provider.name_or_email
+
+    encoders:
+        Sylius\Component\User\Model\UserInterface: sha512
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    oauth:   "/login/oauth"
+                login_path:   /login
+                failure_path: /login
+                oauth_user_provider:
+                    service: sylius.oauth.user_provider
+            logout: true
+            anonymous: true
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
