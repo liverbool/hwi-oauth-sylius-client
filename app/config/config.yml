@@ -104,4 +104,4 @@ hwi_oauth:
                 identifier: id
                 nickname:   username
                 realname:   fullname
-                email:      username
+                email:      email
